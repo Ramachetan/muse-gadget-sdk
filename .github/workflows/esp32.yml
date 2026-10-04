@@ -119,6 +119,9 @@ jobs:
           - board: home-assistant-voice
             target: esp32s3
             overlays: ";devices/sdkconfig.home-assistant-voice"
+          - board: seeed-respeaker-lite
+            target: esp32s3
+            overlays: ";devices/sdkconfig.seeed-respeaker-lite"
           - board: muse-waveshare-s3-175c
             target: esp32s3
             overlays: ";devices/sdkconfig.muse;devices/sdkconfig.muse-waveshare-s3-175c"
