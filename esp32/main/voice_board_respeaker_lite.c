@@ -183,24 +183,6 @@ esp_err_t voice_board_init(void) {
     if (err == ESP_OK) err = i2s_channel_enable(s_tx);
     if (err != ESP_OK) return err;
     voice_board_set_volume(60);
-    // Check the physical receive path before enabling push-to-talk. Keep only
-    // a sample count and peak; no startup audio is stored or sent to Muse.
-    err = voice_board_mic_start();
-    if (err != ESP_OK) return err;
-    int16_t pcm[CHUNK];
-    size_t samples = 0;
-    int max_peak = 0;
-    for (int i = 0; i < 5; i++) {
-        int peak;
-        size_t got = voice_board_mic_read(pcm, CHUNK, &peak);
-        samples += got;
-        if (peak > max_peak) max_peak = peak;
-        if (!got) break;
-    }
-    voice_board_mic_stop();
-    ESP_LOGI(TAG, "microphone check: %u samples, peak %d, mute %s",
-             (unsigned)samples, max_peak, voice_board_muted() ? "on" : "off");
-    if (!samples) return ESP_ERR_TIMEOUT;
     ESP_LOGI(TAG, "reSpeaker audio ready; XIAO BOOT is push-to-talk");
     return ESP_OK;
 }
