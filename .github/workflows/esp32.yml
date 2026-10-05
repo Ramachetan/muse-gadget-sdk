@@ -104,6 +104,9 @@ jobs:
           - board: devkit
             target: esp32c5
             overlays: ""
+          - board: c6-nopsram
+            target: esp32c6
+            overlays: ";devices/sdkconfig.c6-nopsram"
           - board: ideaspark
             target: esp32
             overlays: ";devices/sdkconfig.ideaspark"
@@ -119,6 +122,9 @@ jobs:
           - board: home-assistant-voice
             target: esp32s3
             overlays: ";devices/sdkconfig.home-assistant-voice"
+          - board: espressif-s3-devkitc-1
+            target: esp32s3
+            overlays: ";devices/sdkconfig.espressif-s3-devkitc-1"
           - board: seeed-respeaker-lite
             target: esp32s3
             overlays: ";devices/sdkconfig.seeed-respeaker-lite"

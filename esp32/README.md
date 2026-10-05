@@ -164,6 +164,8 @@ status screen.
 | Board | What you get | Build it |
 |---|---|---|
 | ESP32-C5 DevKitC-1 | Status light and button | `idf.py build` |
+| ESP32-C6 devkit without PSRAM | Status light and button | `tools/board.sh c6-nopsram build` |
+| Espressif ESP32-S3-DevKitC-1 | Status light and button | `tools/board.sh espressif-s3-devkitc-1 build` |
 | ideaspark ESP32 with 1.9" display | Status on screen, images | `tools/board.sh ideaspark build` |
 | Seeed SenseCAP Indicator | Status on a 4" screen, images | `tools/board.sh sensecap-indicator build` |
 | Seeed reTerminal E1001 | Status on a 7.5" e-paper, black and white images | `tools/board.sh reterminal-e1001 build` |
@@ -209,6 +211,10 @@ To put your own avatar on a board's screen, plug in the board and run
 board's pixel avatar, checks the result, then builds and flashes it. Your avatar
 stays out of git. See [`tools/muse/AVATAR_RECIPE.md`](tools/muse/AVATAR_RECIPE.md)
 for how it works and for boards that need the manual steps.
+
+To give Muse a command of its own, such as reading a sensor or switching a
+relay, advertise it in `link.register` and handle it in `main/app.c`.
+[`AGENTS.md`](AGENTS.md#adding-a-command) walks through it.
 
 To work on the UI without a board, use the
 [`simulator/`](simulator/README.md) desktop preview. It runs the production UI
